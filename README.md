@@ -36,8 +36,8 @@ This codebase simulates **15 years of hourly operation** for two types of hydrog
 
 **Option A — Git (recommended):**
 ```bash
-git clone https://github.com/<YOUR_USERNAME>/electrolyser-thesis.git
-cd electrolyser-thesis
+git clone https://github.com/shubham0429/Techno_economic-Optimization-of-Electrolyser-performance-.git
+cd Techno_economic-Optimization-of-Electrolyser-performance-
 ```
 
 **Option B — Download ZIP:**  
