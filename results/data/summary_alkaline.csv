@@ -1,0 +1,2 @@
+size_mw,storage_kg,years,LCOH_EUR_per_kg,total_H2_kg,total_H2_tonnes,NPV_cost_EUR,lcoh_capex,lcoh_electricity,lcoh_opex,lcoh_compression,lcoh_replacement,stack_replacements,SEC_stack_mean,capacity_factor,total_operating_hours
+20.0,2500.0,15,5.751363198844323,28205524.970521625,28205.524970521627,22635000.0,0.819803840993644,4.075810632655999,0.26590535038218427,0.24500000000000005,0.0,1,66.70754140252642,0.7894596651445966,103735.0

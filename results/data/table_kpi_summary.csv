@@ -1,0 +1,16 @@
+Parameter,Value
+System Size,20 MW
+Simulation Period,15 years
+Total H₂ Production,"29,828 tonnes"
+Average Capacity Factor,88.0%
+Operating Hours,"115,652 h"
+Stack Replacements,2
+Average SEC (stack),64.5 kWh/kg
+Average SEC (total),71.1 kWh/kg
+Stack Efficiency (LHV),51.7%
+System Efficiency (LHV),46.9%
+Unmet Demand,9 kg (0.00%)
+LCOH (gross),€12.12/kg
+LCOH (net),€11.85/kg
+NPV,€-38.0M
+CAPEX Total,€35.7M

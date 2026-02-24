@@ -1,0 +1,5 @@
+# Core dependencies — tested with Python 3.9+
+numpy>=2.0
+scipy>=1.13
+pandas>=2.0
+matplotlib>=3.9

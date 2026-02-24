@@ -1,0 +1,15 @@
+Parameter,Value
+Electrolyser Size (MW),20.0
+Storage Capacity (kg),2500.0
+Simulation Period (years),15
+Total H₂ Production (tonnes),31386.0
+LCOH (€/kg),8.22
+LCOH with Heat Credit (€/kg),8.22
+Average SEC Stack (kWh/kg),59.94
+Average SEC System (kWh/kg),65.72
+Stack Replacements,2
+Replacement Years,"[2027, 2034]"
+Total CAPEX (€M),45.25
+NPV of Costs (€M),146.73
+Average Stack Temperature (°C),58.1
+Heat Recovered (GWh),157.10

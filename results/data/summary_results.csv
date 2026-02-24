@@ -1,0 +1,17 @@
+Parameter,Value
+Electrolyser Size (MW),20.0
+Storage Capacity (kg),2500.0
+Simulation Period (years),15
+MIN_LOAD_FRAC,0.15
+Total H₂ Production (tonnes),31103.4
+Capacity Factor (%),82.2
+Curtailment Fraction (%),69.8
+Operating Hours,108030
+LCOH (€/kg),10.52
+LCOH Curtailment (€/kg),1.905
+Avg SEC Stack (kWh/kg),58.05
+Avg SEC System (kWh/kg),63.80
+Stack Replacements,2
+Replacement Years,"[2027, 2034]"
+Total CAPEX (€M),47.22
+NPV of Costs (€M),185.94

@@ -1,0 +1,14 @@
+Parameter,Value
+Electrolyser Size (MW),20.0
+Storage Capacity (kg),0.0
+Simulation Period (years),15
+Total H₂ Production (tonnes),37009.3
+LCOH (€/kg),4.42
+LCOH CAPEX (€/kg),1.31
+LCOH Electricity (€/kg),3.04
+Average SEC (kWh/kg),49.06
+Stack Replacements,1
+Replacement Years,['10.7']
+Total CAPEX (€M),27.61
+Average Capacity Factor,72.84%
+Total Operating Hours,95711

@@ -1,0 +1,9 @@
+Metric,PEM,Alkaline
+LCOH (€/kg),10.10,6.43
+CAPEX (€/kW),1750,1150
+Annual H2 (t/year),2092,2317
+SEC (kWh/kg),51.8,52.4
+Efficiency (%),64.3,63.6
+Stack Replacements,1,1
+Curtailment LCOH (€/kg),1.509,0.908
+Project Lifetime (years),15,15
