@@ -1,7 +1,7 @@
 # Techno-Economic Optimisation of PEM and Alkaline Water Electrolyser Systems
 
 **Master Thesis — Shubham Manchanda**  
-*Chair of Wind Energy Technology (WTW), TU Munich*
+*Fakultät Maschinenbau, M.Eng - Wasserstofftechnologie - und wirtschaft, TH Ingolstadt*
 
 ---
 
