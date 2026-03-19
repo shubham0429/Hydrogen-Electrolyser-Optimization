@@ -98,8 +98,8 @@ H₂ demand profile    →      • Stack replacements        →   Cost breakdo
 
 ```bash
 # Clone and set up
-git clone https://github.com/shubham0429/hydrogen-electrolyser-optimization.git
-cd hydrogen-electrolyser-optimization
+git clone https://github.com/shubham0429/Hydrogen-Electrolyser-Optimization.git
+cd Hydrogen-Electrolyser-Optimization
 python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 
