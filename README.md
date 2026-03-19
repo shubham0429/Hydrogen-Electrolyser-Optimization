@@ -186,8 +186,8 @@ Results appear in `results/pem_thesis_final/` and `results/alkaline_thesis_final
 ## Contact
 
 **Shubham Manchanda**  
-M.Eng — Hydrogen Technology & Economy  
-TH Ingolstadt (thesis conducted at Chair of Wind Energy Technology, TU Munich)
+M.Eng — Hydrogen Technology & Economy, TH Ingolstadt  
+Thesis conducted at [Fraunhofer IFF](https://www.iff.fraunhofer.de), Magdeburg
 
 ## License
 
