@@ -30,6 +30,14 @@ Green hydrogen is central to Europe's energy transition, but the **investment de
 
 > **Bottom line:** Alkaline achieves **46% lower hydrogen cost** than PEM under identical renewable conditions, primarily due to lower capital cost and longer stack lifetime.
 
+### Key Insights
+
+1. **Electricity cost dominates LCOH** — renewable generation cost (LCOE) accounts for 50–65% of total hydrogen cost for both technologies, making it the single most important lever for project economics
+2. **Alkaline wins on cost, PEM wins on flexibility** — Alkaline's lower CAPEX (€1,150 vs €1,950/kW) and longer stack lifetime (80,000 vs 60,000 h) drive its cost advantage, but PEM handles variable renewable input with wider load range (5–100% vs 20–100%)
+3. **Degradation increases LCOH by 8–12% over 15 years** — voltage degradation (1.5 µV/h PEM, 0.7 µV/h Alkaline) progressively reduces efficiency, requiring stack replacement that adds €0.30–0.80/kg to lifetime cost
+4. **System sizing is non-trivial** — undersized electrolysers waste renewable energy through curtailment; oversized systems increase CAPEX without proportional output gains. The optimum is configuration-specific, not rule-of-thumb
+5. **Uncertainty is significant** — Monte Carlo analysis shows LCOH can vary by ±40% (PEM) and ±30% (Alkaline) depending on input assumptions, highlighting the risk of deterministic-only analysis
+
 ### Sample Output
 
 <p align="center">
