@@ -1,194 +1,174 @@
-# Techno-Economic Optimisation of PEM and Alkaline Water Electrolyser Systems
+# Hydrogen Electrolyser Techno-Economic Optimisation
 
-**Master Thesis — Shubham Manchanda**  
-*Fakultät Maschinenbau, M.Eng - Wasserstofftechnologie - und wirtschaft, TH Ingolstadt*
+> **Python simulation framework for 15-year techno-economic comparison of PEM and Alkaline water electrolysers under real-world renewable energy conditions.**
+
+![Python](https://img.shields.io/badge/Python-3.9+-blue?logo=python&logoColor=white)
+![NumPy](https://img.shields.io/badge/NumPy-Scientific_Computing-013243?logo=numpy)
+![License](https://img.shields.io/badge/License-Academic-green)
+![Simulation](https://img.shields.io/badge/Simulation-131%2C400_hours-orange)
+
+*Master Thesis — Shubham Manchanda, M.Eng Hydrogen Technology & Economy, TH Ingolstadt*
 
 ---
 
-## What This Project Does
+## Why This Matters
 
-This codebase simulates **15 years of hourly operation** for two types of hydrogen electrolysers (PEM and Alkaline) powered by 132 MW of wind and solar energy. It calculates:
+Green hydrogen is central to Europe's energy transition, but the **investment decision between PEM and Alkaline electrolysers** remains unclear under variable renewable supply. This model quantifies that decision with real engineering data — making it directly useful for energy companies evaluating electrolyser projects.
 
-- How much hydrogen is produced each hour
-- How the electrolyser degrades over time and when components need replacement
-- The **Levelised Cost of Hydrogen (LCOH)** — the total cost per kg of H2
-- The optimal electrolyser size and storage capacity for different renewable energy scenarios
+---
 
-### Key Results
+## Key Results
 
-| Metric | PEM (35 MW) | Alkaline (20 MW) |
-|--------|-------------|------------------|
-| **LCOH** | 9.06 EUR/kg H2 | 4.86 EUR/kg H2 |
-| **Demand Met** | 95.2% | 96.0% |
+| Metric | PEM (35 MW, 12 t storage) | Alkaline (20 MW, 10 t storage) |
+|--------|---------------------------|-------------------------------|
+| **LCOH** | **€9.06 /kg H₂** | **€4.86 /kg H₂** |
+| **Demand Satisfaction** | 95.4% | 96.0% |
+| **Capacity Factor** | 41.1% | 73.0% |
+| **15-Year NPV** | −€62.5M | +€18.2M |
 | **Stack Replacements** | 1 (at ~60,000 h) | 1 (at ~80,000 h) |
+| **Monte Carlo LCOH Range** | €6.24 – €12.64 /kg | €4.35 – €7.04 /kg |
+
+> **Bottom line:** Alkaline achieves **46% lower hydrogen cost** than PEM under identical renewable conditions, primarily due to lower capital cost and longer stack lifetime.
+
+### Sample Output
+
+<p align="center">
+  <img src="results/plots/fig06_pem_vs_alkaline_comparison.png" width="80%" alt="PEM vs Alkaline Technology Comparison">
+</p>
+<p align="center"><em>Figure 1 — Side-by-side comparison of PEM and Alkaline electrolyser performance across key metrics</em></p>
+
+<p align="center">
+  <img src="results/plots/fig04_lcoh_waterfall_consistent.png" width="80%" alt="LCOH Cost Breakdown Waterfall">
+</p>
+<p align="center"><em>Figure 2 — LCOH waterfall breakdown showing electricity cost as the dominant driver</em></p>
+
+<p align="center">
+  <img src="results/plots/fig05_tornado_sensitivity_both.png" width="80%" alt="Sensitivity Analysis Tornado Chart">
+</p>
+<p align="center"><em>Figure 3 — Tornado sensitivity analysis: electricity price dominates LCOH uncertainty for both technologies</em></p>
+
+<p align="center">
+  <img src="results/plots/fig08_monte_carlo_distribution.png" width="80%" alt="Monte Carlo LCOH Distribution">
+</p>
+<p align="center"><em>Figure 4 — Monte Carlo simulation (N=10,000) showing LCOH probability distributions</em></p>
 
 ---
 
-## Quick Start (5 minutes)
+## Features
 
-### Prerequisites
+- **Hourly simulation** — 131,400 timesteps over 15 years with real wind+solar profiles (132 MW installed capacity)
+- **Electrochemical modelling** — Nernst-based reversible voltage, Butler-Volmer activation, ohmic and concentration overpotentials
+- **Degradation model** — Voltage degradation (µV/h) with stack replacement logic based on efficiency thresholds
+- **Grid-search optimisation** — 600 configurations (10 electrolyser sizes × 10 storage capacities × 6 renewable fractions)
+- **Economic analysis** — LCOH, NPV, IRR, payback period, CAPEX/OPEX breakdown with oxygen revenue credits
+- **Uncertainty quantification** — Monte Carlo simulation (N=10,000) + tornado sensitivity charts
+- **Publication-ready plots** — 90+ figures generated automatically in PNG and PDF
 
-- **Python 3.9 or higher** — check with `python3 --version`
-- **pip** — comes with Python
-- No MATLAB needed (data files are included)
+---
 
-### Step 1: Download the Code
+## How It Works
 
-**Option A — Git (recommended):**
-```bash
-git clone https://github.com/shubham0429/Techno_economic-Optimization-of-Electrolyser-performance-.git
-cd Techno_economic-Optimization-of-Electrolyser-performance-
+```
+Input Data                    Simulation Engine                 Economic Output
+──────────                    ─────────────────                 ───────────────
+Wind + Solar power    →   Electrolyser model          →   LCOH (€/kg H₂)
+(8,760 h/year × 15yr)       • Polarisation curve             NPV, IRR
+                             • Degradation tracking            Payback period
+H₂ demand profile    →      • Stack replacements        →   Cost breakdown
+(hourly kg)                  • Storage buffer dynamics         (CAPEX, OPEX, energy)
+
+                       Optimisation: grid search over 600 configurations
+                       Selection: lowest LCOH meeting ≥95% demand satisfaction
 ```
 
-**Option B — Download ZIP:**  
-Click the green **Code** button on GitHub, then **Download ZIP**, and extract it.
+**Cell voltage model:**  
+`V = E_rev(T, P) + η_activation + η_ohmic + η_concentration`
 
-### Step 2: Set Up Python Environment
+---
+
+## Quick Start
 
 ```bash
-# Create a virtual environment
-python3 -m venv .venv
-
-# Activate it
-source .venv/bin/activate        # macOS / Linux
-# .venv\Scripts\activate         # Windows (Command Prompt)
-# .venv\Scripts\Activate.ps1     # Windows (PowerShell)
-
-# Install dependencies (only 4 packages: numpy, scipy, pandas, matplotlib)
+# Clone and set up
+git clone https://github.com/shubham0429/hydrogen-electrolyser-optimization.git
+cd hydrogen-electrolyser-optimization
+python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
-```
 
-### Step 3: Run a Simulation
-
-```bash
+# Run PEM 15-year simulation (~6 min)
 cd source_code
 python run_pem_thesis_final.py
+
+# Run Alkaline 15-year simulation (~4 min)
+python run_alkaline_thesis_final.py
 ```
 
-After about 6 minutes you will see results in `results/pem_thesis_final/`.
+Results appear in `results/pem_thesis_final/` and `results/alkaline_thesis_final/`.
 
----
+### All Scripts
 
-## What to Run (and in What Order)
+| Script | Purpose | Runtime |
+|--------|---------|---------|
+| `run_pem_thesis_final.py` | PEM 15-year simulation + 8 figures | ~6 min |
+| `run_alkaline_thesis_final.py` | Alkaline 15-year simulation + 8 figures | ~4 min |
+| `corrected_thesis_plots.py` | Comparison plots + optimisation heatmaps | ~30 sec |
+| `sensitivity_analysis_alkaline.py` | Monte Carlo (N=10,000) + tornado charts | ~50 sec |
+| `pem_optimization_v3.py` | PEM grid search (600 configs × 6 RE)¹ | ~3–5 hrs |
+| `alkaline_optimization_v3.py` | Alkaline grid search¹ | ~3–5 hrs |
 
-All commands must be run from the `source_code/` folder:
-
-```bash
-cd source_code
-```
-
-### Essential Scripts (start here)
-
-| # | Command | What It Does | Time |
-|---|---------|--------------|------|
-| 1 | `python run_pem_thesis_final.py` | Runs PEM simulation for 15 years, generates 8 figures + CSV data | ~6 min |
-| 2 | `python run_alkaline_thesis_final.py` | Same for Alkaline technology | ~4 min |
-| 3 | `python corrected_thesis_plots.py` | Generates comparison plots and optimisation heatmaps (uses pre-computed data) | ~30 sec |
-| 4 | `python sensitivity_analysis_alkaline.py` | Monte Carlo uncertainty analysis + tornado diagrams | ~50 sec |
-
-### Optional Scripts (only if needed)
-
-| Command | What It Does | Time |
-|---------|--------------|------|
-| `python pem_optimization_v3.py` | Re-runs PEM grid search (600 configs x 6 RE scenarios). Pre-computed results already included. Only re-run if you change parameters | ~3-5 hrs |
-| `python alkaline_optimization_v3.py` | Same grid search for Alkaline | ~3-5 hrs |
-
-> **Warning:** The optimisation scripts take hours. The pre-computed CSVs in `results/data/` are ready to use.
-
----
-
-## Where to Find Results
-
-```
-results/
-|
-+-- pem_thesis_final/              <-- PEM simulation output
-|   +-- baseline_timeseries.csv        131,400 hourly data points (15 years)
-|   +-- summary_results.csv            Key performance indicators
-|   +-- fig1-fig8 (.png + .pdf)        Degradation, SEC, LCOH, Monte Carlo, etc.
-|   +-- monte_carlo_*.csv              Uncertainty analysis data
-|
-+-- alkaline_thesis_final/         <-- Alkaline simulation output (same structure)
-|
-+-- thesis_final_plots/            <-- BEST plots for the thesis
-|   +-- fig_lcoh_vs_re_comparison      LCOH vs renewable energy fraction
-|   +-- fig_pem_performance_evolution  15-year PEM performance (3 panels)
-|   +-- fig_alkaline_performance_evolution  15-year ALK performance
-|   +-- pem_heatmap_RE20-RE100         Optimisation heatmaps (LCOH + demand)
-|   +-- alkaline_heatmap_RE20-RE100
-|   +-- fig_feasible_summary_table     Summary of feasible configurations
-|
-+-- plots/                         <-- All original thesis figures (90+ plots)
-|
-+-- data/                          <-- Pre-computed optimisation results
-    +-- pem_grid_search_all_RE.csv       416 PEM configs
-    +-- alkaline_grid_search_all_RE.csv  600 Alkaline configs
-    +-- monte_carlo_results.csv
-    +-- sensitivity_results.csv
-```
+> ¹ Pre-computed results are included in `results/data/`. Only re-run if changing parameters.
 
 ---
 
 ## Project Structure
 
 ```
-+-- README.md                    <-- You are here
-+-- ABSTRACT.txt                 <-- 200-word thesis abstract
-+-- FINAL_THESIS.docx            <-- Complete thesis document
-+-- requirements.txt             <-- Python dependencies
-|
-+-- data/                        <-- Input data (do not modify)
-|   +-- combined_wind_pv_DATA.mat    Hourly wind+solar power (8,760 hours)
-|   +-- Company_2_hourly_gas_demand.csv  Hourly H2 demand profile
-|
-+-- source_code/                 <-- All Python code
-    |
-    |  SIMULATION ENGINES (core logic)
-    +-- sim_concise.py               PEM electrolyser model (3,200 lines)
-    +-- sim_alkaline.py              Alkaline electrolyser model (3,400 lines)
-    +-- electrochemistry.py          Electrochemical equations (prototype)
-    +-- data_loader.py               Data loading utilities
-    |
-    |  THESIS RUNNERS (run these)
-    +-- run_pem_thesis_final.py      Chapter 4: PEM simulation + plots
-    +-- run_alkaline_thesis_final.py Chapter 5: Alkaline simulation + plots
-    |
-    |  OPTIMISATION
-    +-- pem_optimization_v3.py       PEM grid search (10 sizes x 10 storages x 6 RE)
-    +-- alkaline_optimization_v3.py  Alkaline grid search
-    |
-    |  ANALYSIS AND PLOTTING
-    +-- corrected_thesis_plots.py    ** Final corrected comparison figures **
-    +-- pem_thesis_plots_complete.py PEM-specific figures
-    +-- alkaline_thesis_plots.py     Alkaline-specific figures
-    +-- thesis_gold_plots.py         Publication-style figures (see known issues)
-    +-- pem_vs_alkaline_comparison.py
-    +-- sensitivity_analysis_alkaline.py  Monte Carlo + tornado charts
-    +-- stack_lifetime_sensitivity.py
-    +-- optimization_heatmaps_with_demand.py
+├── README.md
+├── ABSTRACT.txt                        Thesis abstract (200 words)
+├── requirements.txt                    numpy, scipy, pandas, matplotlib
+│
+├── data/
+│   ├── combined_wind_pv_DATA.mat       Hourly wind+solar power (8,760 h)
+│   └── Company_2_hourly_gas_demand.csv Hourly hydrogen demand profile
+│
+├── source_code/
+│   ├── sim_concise.py                  PEM electrolyser model (core engine)
+│   ├── sim_alkaline.py                 Alkaline electrolyser model (core engine)
+│   ├── electrochemistry.py             Electrochemical equations
+│   ├── data_loader.py                  MATLAB .mat file loading
+│   ├── run_pem_thesis_final.py         → Run this for PEM results
+│   ├── run_alkaline_thesis_final.py    → Run this for Alkaline results
+│   ├── pem_optimization_v3.py          Grid search optimisation (PEM)
+│   ├── alkaline_optimization_v3.py     Grid search optimisation (Alkaline)
+│   ├── corrected_thesis_plots.py       → Comparison figures (recommended)
+│   ├── sensitivity_analysis_alkaline.py Monte Carlo + sensitivity
+│   └── ...                             Additional plotting scripts
+│
+└── results/
+    ├── pem_thesis_final/               PEM: 131,400-row timeseries + 8 figures
+    ├── alkaline_thesis_final/          Alkaline: same structure
+    ├── thesis_final_plots/             Best figures for publication
+    ├── plots/                          All 90+ thesis figures
+    └── data/                           Pre-computed optimisation CSVs
+        ├── pem_grid_search_all_RE.csv       416 PEM configurations
+        ├── alkaline_grid_search_all_RE.csv  600 Alkaline configurations
+        ├── monte_carlo_results.csv
+        └── sensitivity_results.csv
 ```
 
 ---
 
-## How the Simulation Works
+## Technical Details
 
-```
-Input Data                    Simulation                        Economics
-----------                    ----------                        ---------
-Wind + Solar power    ->  Electrolyser model         ->  LCOH (EUR/kg H2)
-(8,760 h/year)           - Polarisation curve            NPV, IRR
-                         - Degradation over time          Payback period
-H2 demand profile     ->  - Stack replacements       ->  Cost breakdown
-(hourly kg)              - Storage buffer dynamics       (CAPEX, OPEX, energy)
-
-                    Repeated for 15 years (131,400 hours)
-```
-
-Cell voltage model: V = E_rev(T,P) + n_activation + n_ohmic + n_concentration
-
-Optimisation: Grid search over 600 combinations (10 electrolyser sizes x 10 storage
-capacities x 6 renewable energy fractions), selecting the configuration with the
-lowest LCOH that meets at least 95% of hydrogen demand.
+| | |
+|---|---|
+| **Language** | Python 3.9+ |
+| **Dependencies** | numpy, scipy, pandas, matplotlib |
+| **Input data** | 132 MW wind+solar (MATLAB .mat), hourly H₂ demand (CSV) |
+| **Simulation horizon** | 15 years (131,400 hours) |
+| **Optimisation** | Exhaustive grid search, 3-criteria hierarchical selection |
+| **Uncertainty** | Monte Carlo N=10,000, seeded (seed=42) for reproducibility |
+| **Tested on** | macOS (Python 3.9.6), compatible with Linux/Windows |
 
 ---
 
@@ -196,50 +176,20 @@ lowest LCOH that meets at least 95% of hydrogen demand.
 
 | Problem | Solution |
 |---------|----------|
-| `ModuleNotFoundError: No module named 'numpy'` | Run `pip install -r requirements.txt` (make sure your venv is activated) |
-| `FileNotFoundError: .mat file not found` | Make sure you run scripts from inside `source_code/`, not the root folder |
-| `python: command not found` | Use `python3` instead of `python` |
-| Script takes too long | The optimisation scripts take 3-5 hours. This is normal. Use the pre-computed CSVs instead |
-| Plots look different on Windows | Font rendering varies by OS. The data is identical |
-
----
-
-## Known Issues
-
-| File | Issue | What to Do |
-|------|-------|------------|
-| `thesis_gold_plots.py` | Contains hardcoded LCOH values (lines 675-680) that do not match the 95% demand filter | Use `corrected_thesis_plots.py` instead |
-| `pem_vs_alkaline_comparison.py` | API mismatch with current `sim_alkaline.py` | Comparison data is in `results/data/comparison_summary.csv` |
-
----
-
-## Technical Details
-
-### Dependencies
-
-Only 4 Python packages (installed automatically via requirements.txt):
-
-| Package | Purpose |
-|---------|---------|
-| numpy | Numerical arrays and math |
-| scipy | MATLAB .mat file loading, interpolation |
-| pandas | DataFrames for timeseries data |
-| matplotlib | All plots and figures |
-
-### Reproducibility
-
-- Random seed = 42: all stochastic operations are seeded for reproducibility
-- 132 MW RE capacity: fixed in the input data file, not a tuneable parameter
-- Tested on Python 3.9.6 (macOS). Compatible with Python 3.9+.
+| `ModuleNotFoundError` | Run `pip install -r requirements.txt` inside activated venv |
+| `FileNotFoundError: .mat file` | Run scripts from `source_code/`, not the root folder |
+| `python: command not found` | Use `python3` instead |
+| Optimisation takes hours | Normal. Use pre-computed CSVs in `results/data/` |
 
 ---
 
 ## Contact
 
 **Shubham Manchanda**  
-Master Thesis — Chair of Wind Energy Technology (WTW), TU Munich
+M.Eng — Hydrogen Technology & Economy  
+TH Ingolstadt (thesis conducted at Chair of Wind Energy Technology, TU Munich)
 
 ## License
 
-This code is provided for academic review and examination purposes.
+This code is provided for academic review and examination purposes.  
 Please contact the author before any reuse or redistribution.
