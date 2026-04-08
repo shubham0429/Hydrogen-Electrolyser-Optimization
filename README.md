@@ -7,7 +7,7 @@
 ![License](https://img.shields.io/badge/License-Academic-green)
 ![Simulation](https://img.shields.io/badge/Simulation-131%2C400_hours-orange)
 
-*Master Thesis — Shubham Manchanda, M.Eng Hydrogen Technology & Economy, TH Ingolstadt*
+*Master Thesis — Shubham Manchanda, M.Eng Hydrogen Technology & Economics (Core Modules completed), TH Ingolstadt*
 
 ---
 
