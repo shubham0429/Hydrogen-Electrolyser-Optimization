@@ -98,7 +98,7 @@ H₂ demand profile    →      • Stack replacements        →   Cost breakdo
 
 ```bash
 # Clone and set up
-git clone https://github.com/shubham0429/Hydrogen-Electrolyser-Optimization.git
+git clone https://github.com/shubham0429/Hydrogen-Electrolyser-Optimisation.git
 cd Hydrogen-Electrolyser-Optimization
 python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
@@ -194,10 +194,9 @@ Results appear in `results/pem_thesis_final/` and `results/alkaline_thesis_final
 ## Contact
 
 **Shubham Manchanda**  
-M.Eng — Hydrogen Technology & Economy, TH Ingolstadt  
+M.Eng — Hydrogen Technology & Economics (Core Modules completed), TH Ingolstadt  
 Thesis conducted at [Fraunhofer IFF](https://www.iff.fraunhofer.de), Magdeburg
 
 ## License
 
 This code is provided for academic review and examination purposes.  
-Please contact the author before any reuse or redistribution.
