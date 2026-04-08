@@ -7,7 +7,7 @@
 ![License](https://img.shields.io/badge/License-Academic-green)
 ![Simulation](https://img.shields.io/badge/Simulation-131%2C400_hours-orange)
 
-*Master Thesis — Shubham Manchanda, M.Eng Hydrogen Technology & Economics (Core Modules completed), TH Ingolstadt*
+*Master Thesis — Shubham Manchanda | Hydrogen Technology & Economics, TH Ingolstadt | Conducted at Fraunhofer IFF, Magdeburg*
 
 ---
 
@@ -99,7 +99,7 @@ H₂ demand profile    →      • Stack replacements        →   Cost breakdo
 ```bash
 # Clone and set up
 git clone https://github.com/shubham0429/Hydrogen-Electrolyser-Optimisation.git
-cd Hydrogen-Electrolyser-Optimization
+cd Hydrogen-Electrolyser-Optimisation
 python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 
@@ -194,9 +194,10 @@ Results appear in `results/pem_thesis_final/` and `results/alkaline_thesis_final
 ## Contact
 
 **Shubham Manchanda**  
-M.Eng — Hydrogen Technology & Economics (Core Modules completed), TH Ingolstadt  
+Hydrogen Technology & Economics (core modules completed), TH Ingolstadt  
 Thesis conducted at [Fraunhofer IFF](https://www.iff.fraunhofer.de), Magdeburg
 
 ## License
 
-This code is provided for academic review and examination purposes.  
+This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).  
+Feel free to use, adapt, or build on this work with attribution.
